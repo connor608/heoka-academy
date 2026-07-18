@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>You're in. Here are your files | Heoka Academy</title>
+<meta name="description" content="Your Heoka Academy download page. Grab your files and run your first job.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316291E'/%3E%3Cpath d='M16 18h8v11h16V18h8v28h-8V35H24v11h-8z' fill='%23FFF8EC'/%3E%3Cpath d='M47 13l-8 38' stroke='%23C2570F' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<!--
+  ============================================================
+  PLACEHOLDERS TO FILL BEFORE LAUNCH
+  (search the file for the exact string in the left column)
+
+  1. https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/AI_Company_Brain_Starter_Kit_v2.zip      - AI Company Brain Starter Kit, the vault folder as a zip
+                              appears at: line 199 (download button href)
+  2. https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/AI_Company_Brain_Starter_Kit_v2.pdf      - AI Company Brain Starter Kit, the guide as a PDF
+                              appears at: line 208 (download button href)
+  3. https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/SME_AI_Playbook_v1.pdf - The SME AI Playbook, PDF
+                              appears at: line 217 (download button href)
+
+  This page is the redirect target for all three Stripe Payment Links on index.html
+  (#STRIPE_LINK_KIT, #STRIPE_LINK_PLAYBOOK, #STRIPE_LINK_BUNDLE). It shows every
+  download, so bundle buyers and single-product buyers can both use it. The booking
+  link is live and needs nothing doing to it.
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Archivo:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4EFE4;
+  --paper-deep:#EBE4D3;
+  --ink:#16291E;
+  --ink-soft:#3C5347;
+  --copper:#C2570F;
+  --copper-deep:#A34708;
+  --terminal:#0E1B13;
+  --terminal-green:#7BE3A0;
+  --line:#16291E22;
+  --serif:'Fraunces',serif;
+  --sans:'Archivo',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:17px;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, #FFFDF5 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+
+/* ---------- header ---------- */
+header{
+  border-bottom:1px solid rgba(244,239,228,.12);
+  padding:18px 0;
+  background:rgba(7,15,10,.92);
+}
+header .wrap{display:flex;justify-content:space-between;align-items:center}
+.wordmark{font-family:var(--mono);font-weight:500;letter-spacing:.18em;font-size:14px;text-transform:uppercase;color:#FFF8EC;text-decoration:none}
+.wordmark span{color:var(--copper)}
+.header-note{font-family:var(--mono);font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:#8FA896}
+
+/* ---------- confirmation hero ---------- */
+.confirm{
+  padding:72px 0 60px;color:#FFF8EC;position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 10%, rgba(123,227,160,.22), transparent 30%),
+    linear-gradient(180deg,#07100B 0%,#0D1B13 60%,#16291E 100%);
+}
+.confirm .wrap{position:relative;z-index:1;text-align:center}
+.tick{
+  width:56px;height:56px;border-radius:50%;margin:0 auto 22px;
+  display:grid;place-items:center;font-size:26px;color:#07100B;background:var(--terminal-green);
+  animation:rise .7s ease both;
+}
+.confirm h1{
+  font-family:var(--serif);font-weight:900;font-size:clamp(38px,5.4vw,64px);
+  line-height:1.02;letter-spacing:-.015em;max-width:16ch;margin:0 auto;
+  animation:rise .7s .08s ease both;
+}
+.confirm h1 em{font-style:italic;font-weight:600;color:var(--terminal-green)}
+.confirm p.lede{
+  font-size:19px;color:#C6D5CB;max-width:56ch;margin:22px auto 0;
+  animation:rise .7s .16s ease both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- sections ---------- */
+section{padding:64px 0;border-top:1px solid var(--line)}
+.section-label{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--copper);margin-bottom:18px;
+}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.2vw,38px);line-height:1.12;letter-spacing:-.01em;max-width:22ch;margin-bottom:18px}
+.section-intro{color:var(--ink-soft);max-width:60ch;font-size:18px}
+
+/* downloads */
+.downloads{display:grid;gap:14px;margin-top:34px;max-width:720px}
+.dl{
+  display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  border:2px solid var(--ink);border-radius:8px;background:#FDFAF2;padding:22px 24px;
+  box-shadow:5px 5px 0 var(--line);
+}
+.dl-text strong{display:block;font-family:var(--serif);font-weight:600;font-size:21px;line-height:1.2}
+.dl-text span{font-size:15px;color:var(--ink-soft)}
+.dl .btn{white-space:nowrap}
+.dl-note{font-family:var(--mono);font-size:13.5px;color:var(--ink-soft);margin-top:22px;max-width:60ch}
+
+.btn{
+  display:inline-block;text-decoration:none;font-family:var(--sans);font-weight:700;
+  padding:14px 26px;border-radius:3px;font-size:16px;transition:transform .15s,box-shadow .15s,background .2s;
+}
+.btn-primary{
+  background:var(--copper);color:#FFF8EC;
+  box-shadow:0 1px 0 var(--copper-deep),0 6px 18px -6px rgba(194,87,15,.55);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 1px 0 var(--copper-deep),0 10px 24px -6px rgba(194,87,15,.6)}
+
+/* steps */
+.steps{counter-reset:step;margin-top:38px;display:grid;gap:0}
+.step{
+  display:grid;grid-template-columns:90px 1fr;gap:24px;padding:28px 0;
+  border-bottom:1px dashed var(--line);counter-increment:step;align-items:baseline;
+}
+.step:last-child{border-bottom:none}
+.step::before{
+  content:"0" counter(step);font-family:var(--serif);font-style:italic;
+  font-size:44px;color:var(--copper);line-height:1;
+}
+.step h3{font-size:19px;font-weight:700;margin-bottom:6px}
+.step p{color:var(--ink-soft);max-width:58ch}
+
+/* done for you */
+.dfy{background:var(--paper-deep)}
+.dfy-box{
+  border:1px dashed var(--ink-soft);border-radius:8px;padding:34px 32px;background:transparent;
+  max-width:760px;
+}
+.dfy-box .mono{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.dfy-box h3{font-family:var(--serif);font-weight:600;font-size:24px;margin:8px 0 10px}
+.dfy-box p{font-size:16px;color:var(--ink-soft);max-width:58ch}
+.dfy-box .btn{margin-top:22px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:40px 0 56px;font-family:var(--mono);font-size:13px;color:var(--ink-soft)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media(max-width:780px){
+  .confirm{padding:56px 0 48px}
+  .dl{flex-direction:column;align-items:flex-start}
+  .dl .btn{width:100%;text-align:center}
+  .step{grid-template-columns:64px 1fr;gap:14px}
+  .step::before{font-size:34px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="index.html">Heoka<span>&nbsp;/&nbsp;</span>Academy</a>
+    <span class="header-note">Order confirmed</span>
+  </div>
+</header>
+
+<main>
+
+<div class="confirm">
+  <div class="wrap">
+    <div class="tick" aria-hidden="true">&#10003;</div>
+    <h1>That's paid. Your files are <em>right here</em>.</h1>
+    <p class="lede">Thank you, genuinely. Grab everything below, then give me half an hour on a quiet evening and your AI will start answering like it knows your business.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <p class="section-label">Your downloads</p>
+    <h2>Everything you bought, in one place.</h2>
+    <p class="section-intro">Take whichever ones you paid for. If you bought both together, all three are yours.</p>
+
+    <div class="downloads">
+
+      <div class="dl">
+        <div class="dl-text">
+          <strong>The company brain folder</strong>
+          <span>A zip file. Unzip it and open it in Obsidian. This is the memory.</span>
+        </div>
+        <!-- PLACEHOLDER: https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/AI_Company_Brain_Starter_Kit_v2.zip -->
+        <a class="btn btn-primary" href="https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/AI_Company_Brain_Starter_Kit_v2.zip">Download the folder</a>
+      </div>
+
+      <div class="dl">
+        <div class="dl-text">
+          <strong>The starter kit guide</strong>
+          <span>A PDF. The half-hour setup, the business file and the nine ready-made jobs.</span>
+        </div>
+        <!-- PLACEHOLDER: https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/AI_Company_Brain_Starter_Kit_v2.pdf -->
+        <a class="btn btn-primary" href="https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/AI_Company_Brain_Starter_Kit_v2.pdf">Download the guide</a>
+      </div>
+
+      <div class="dl">
+        <div class="dl-text">
+          <strong>The SME AI Playbook</strong>
+          <span>A PDF. Where your hours go, what to hand over first, and how to keep client information safe.</span>
+        </div>
+        <!-- PLACEHOLDER: https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/SME_AI_Playbook_v1.pdf -->
+        <a class="btn btn-primary" href="https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/SME_AI_Playbook_v1.pdf">Download the playbook</a>
+      </div>
+
+    </div>
+
+    <p class="dl-note">The same links are in your email, so you do not have to keep this page open. If it has not arrived in a few minutes, check your spam folder. Still nothing? Reply to the receipt and I will send them straight over.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="section-label">Start here</p>
+    <h2>Three things to do first.</h2>
+    <div class="steps">
+      <div class="step">
+        <div>
+          <h3>Open the folder in Obsidian</h3>
+          <p>Obsidian is free. Install it, choose "Open folder as vault", and point it at the folder you just unzipped. That is the whole install. Everything inside is an ordinary file on your own computer.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Fill in MASTER.md</h3>
+          <p>It is the first file in the folder and it is mostly blanks. What you sell, what you charge, who your clients are, how you like things written. Fifteen minutes here is what stops the generic answers. Do not skip it, it is the whole trick.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Run the Monday review</h3>
+          <p>Open your usual ChatGPT or Claude, paste in MASTER.md, then paste in the Monday review job. Ask it something you asked it last week. The difference is the thing you just paid for.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dfy">
+  <div class="wrap">
+    <div class="dfy-box">
+      <span class="mono">If you would rather not do it yourself</span>
+      <h3>I can set the whole thing up for you.</h3>
+      <p>Some owners want this working by Friday without touching it, or they have reached the point where a client is asking in writing where their information goes. That is a different conversation and it is worth having properly. Book fifteen minutes and we will work out whether it is worth doing.</p>
+      <a class="btn btn-primary" href="https://calendar.app.google/C2fbqws67vmDvneV7" target="_blank" rel="noopener">Book a fifteen minute call</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>HEOKA / ACADEMY &middot; built in the UK</span>
+    <span>one payment &middot; no subscription</span>
+  </div>
+</footer>
+
+</body>
+</html>
