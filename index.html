@@ -23,6 +23,48 @@
 <meta name="twitter:title" content="Make ChatGPT actually know your business">
 <meta name="twitter:description" content="You pay £20 a month for AI that forgets you every morning. The kit gives it a memory of your clients, your jobs and how you work. Setup takes half an hour.">
 <meta name="twitter:image" content="https://connor608.github.io/heoka-academy/assets/og.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "AI Company Brain Starter Kit",
+      "description": "A memory for your AI: the business file template, a ready-made folder set for clients, jobs, meetings and decisions, nine ready-made jobs, and a half-hour setup guide.",
+      "brand": {"@type": "Brand", "name": "Heoka Academy"},
+      "image": "https://connor608.github.io/heoka-academy/assets/og.jpg",
+      "offers": {"@type": "Offer", "price": "29", "priceCurrency": "GBP", "availability": "https://schema.org/PreOrder", "url": "https://connor608.github.io/heoka-academy/#buy"}
+    },
+    {
+      "@type": "Product",
+      "name": "The SME AI Playbook",
+      "description": "The thinking layer for an owner with staff: where your hours go, what to hand to AI first with the payback maths, where cloud AI sends your data, and how to spot a bad AI supplier.",
+      "brand": {"@type": "Brand", "name": "Heoka Academy"},
+      "image": "https://connor608.github.io/heoka-academy/assets/og.jpg",
+      "offers": {"@type": "Offer", "price": "39", "priceCurrency": "GBP", "availability": "https://schema.org/PreOrder", "url": "https://connor608.github.io/heoka-academy/#buy"}
+    },
+    {
+      "@type": "Product",
+      "name": "The Complete Bundle",
+      "description": "The AI Company Brain Starter Kit and The SME AI Playbook together.",
+      "brand": {"@type": "Brand", "name": "Heoka Academy"},
+      "image": "https://connor608.github.io/heoka-academy/assets/og.jpg",
+      "offers": {"@type": "Offer", "price": "49", "priceCurrency": "GBP", "availability": "https://schema.org/PreOrder", "url": "https://connor608.github.io/heoka-academy/#buy"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Do I need to pay for anything else?", "acceptedAnswer": {"@type": "Answer", "text": "No. You need the ChatGPT or Claude subscription you already have, and Obsidian, which is free. There is no Heoka subscription and nothing to renew."}},
+        {"@type": "Question", "name": "I'm not technical. Can I actually do this?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Nothing in the kit looks like code; the hardest step is copying a folder and installing a free app. If you get stuck, reply to the delivery email for help."}},
+        {"@type": "Question", "name": "Does it work on Windows and on my phone?", "acceptedAnswer": {"@type": "Answer", "text": "Windows and Mac are both fine. Your notes can sync to your phone through Obsidian, though the setup itself is done on a computer."}},
+        {"@type": "Question", "name": "Isn't this just prompts?", "acceptedAnswer": {"@type": "Answer", "text": "The prompts are the small half. The valuable half is the business file and folder structure underneath, which make the same prompt answer about your business instead of a generic one."}},
+        {"@type": "Question", "name": "What's the difference between the kit and the playbook?", "acceptedAnswer": {"@type": "Answer", "text": "The kit is hands-on setup that gives your AI a memory. The playbook is the thinking layer for an owner with staff: what to hand over first, what it is worth, and how to keep client information safe."}},
+        {"@type": "Question", "name": "Is my business information safe in this?", "acceptedAnswer": {"@type": "Answer", "text": "Your notes sit on your own computer as ordinary files. What you paste into ChatGPT goes to ChatGPT exactly as it does today, so nothing gets worse."}}
+      ]
+    }
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316291E'/%3E%3Cpath d='M16 18h8v11h16V18h8v28h-8V35H24v11h-8z' fill='%23FFF8EC'/%3E%3Cpath d='M47 13l-8 38' stroke='%23C2570F' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 <!--
   ============================================================
@@ -41,10 +83,18 @@
   The header CTA and the hero button both scroll to the pricing block (href="#buy"),
   so they need no Stripe link of their own.
 
+  5. REPLACE_GOATCOUNTER_CODE - GoatCounter site code for visitor stats (free at
+                              goatcounter.com). Uncomment the script at the end of
+                              <body> and swap the code in; also update the privacy
+                              page's "no analytics" line to mention anonymous
+                              visit counting.
+
   Notes for setup:
   - Set every Stripe link's success/redirect URL to thank-you.html on this site.
   - Name the Stripe products exactly as they appear on this page so the receipt matches.
   - Formspree: formspree.io -> new form -> paste the ID over REPLACE_FORM_ID.
+  - When the Stripe links go in, also change the three "availability" values in the
+    JSON-LD block below from schema.org/PreOrder to schema.org/InStock.
 
   Until the placeholders are filled, the page guards itself (script at the bottom):
   - Pricing buttons show a "checkout opens very soon" note and point people at the
@@ -804,6 +854,13 @@ footer a:hover{color:var(--copper)}
     <span>one payment &middot; no subscription &middot; <a href="privacy.html">privacy</a> &middot; <a href="terms.html">the small print</a></span>
   </div>
 </footer>
+
+<!-- Visitor stats (GoatCounter: cookie-free, no consent banner needed).
+     To activate: create the free account, then replace REPLACE_GOATCOUNTER_CODE
+     with the site code and remove the comment markers around the script tag.
+<script data-goatcounter="https://REPLACE_GOATCOUNTER_CODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+-->
+
 
 </body>
 </html>
