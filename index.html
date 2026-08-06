@@ -5,6 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Make ChatGPT actually know your business | Heoka Academy</title>
 <meta name="description" content="You pay £20 a month for AI that forgets you every morning. The kit gives it a memory of your clients, your jobs and how you work. Setup takes half an hour.">
+<!-- If the site moves to a custom domain, update the canonical + og:url + og:image URLs below,
+     plus sitemap.xml and the Sitemap line in robots.txt. -->
+<link rel="canonical" href="https://connor608.github.io/heoka-academy/">
+<meta name="theme-color" content="#07100B">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Heoka Academy">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Make ChatGPT actually know your business">
+<meta property="og:description" content="You pay £20 a month for AI that forgets you every morning. The kit gives it a memory of your clients, your jobs and how you work. Setup takes half an hour.">
+<meta property="og:url" content="https://connor608.github.io/heoka-academy/">
+<meta property="og:image" content="https://connor608.github.io/heoka-academy/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Your AI forgets you every morning. Give ChatGPT or Claude a proper memory. The kit, from £29.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Make ChatGPT actually know your business">
+<meta name="twitter:description" content="You pay £20 a month for AI that forgets you every morning. The kit gives it a memory of your clients, your jobs and how you work. Setup takes half an hour.">
+<meta name="twitter:image" content="https://connor608.github.io/heoka-academy/assets/og.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316291E'/%3E%3Cpath d='M16 18h8v11h16V18h8v28h-8V35H24v11h-8z' fill='%23FFF8EC'/%3E%3Cpath d='M47 13l-8 38' stroke='%23C2570F' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 <!--
   ============================================================
@@ -19,6 +37,8 @@
                               appears at: line 642 (pricing card 3 button href)
   4. REPLACE_FORM_ID        - Formspree form ID for the free Business File capture
                               appears at: line 572 (form action URL)
+  5. REPLACE_CONTACT_EMAIL  - public contact address, on privacy.html (twice)
+                              and terms.html (once)
 
   The header CTA and the hero button both scroll to the pricing block (href="#buy"),
   so they need no Stripe link of their own.
@@ -390,6 +410,14 @@ details p{padding:0 0 20px;color:var(--ink-soft);max-width:62ch}
 /* footer */
 footer{border-top:1px solid var(--line);padding:40px 0 56px;font-family:var(--mono);font-size:13px;color:var(--ink-soft)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:inherit}
+footer a:hover{color:var(--copper)}
+.fine a{color:var(--copper)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 
 @media(max-width:780px){
   .launch-hero{min-height:auto;padding:34px 0 44px}
@@ -577,10 +605,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
            Submissions then land in your inbox and build your list. -->
       <form id="capture" action="https://formspree.io/f/REPLACE_FORM_ID" method="POST">
         <input type="hidden" name="_subject" value="New Heoka Academy signup">
-        <input type="email" name="email" placeholder="you@yourcompany.co.uk" required aria-label="Email address">
+        <input type="email" name="email" placeholder="you@yourcompany.co.uk" required aria-label="Email address" autocomplete="email">
         <button type="submit">Send it to me</button>
       </form>
-      <p class="fine" id="capture-note">One email with the page, then a few short ones on getting real work out of the AI you already pay for. Unsubscribe any time.</p>
+      <p class="fine" id="capture-note">One email with the page, then a few short ones on getting real work out of the AI you already pay for. Unsubscribe any time. <a href="privacy.html">How we handle your email</a>.</p>
     </div>
     <div class="pdf-mock">
       <span class="mono">Free page &middot; Heoka Academy</span>
@@ -766,7 +794,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         this.insertAdjacentElement('afterend', p);
       }
       var free = document.getElementById('free');
-      if(free) free.scrollIntoView({behavior:'smooth'});
+      var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(free) free.scrollIntoView({behavior: reduced ? 'auto' : 'smooth'});
     });
   }
 })();
@@ -775,7 +804,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <footer>
   <div class="wrap">
     <span>HEOKA / ACADEMY &middot; built in the UK</span>
-    <span>one payment &middot; no subscription</span>
+    <span>one payment &middot; no subscription &middot; <a href="privacy.html">privacy</a> &middot; <a href="terms.html">the small print</a></span>
   </div>
 </footer>
 

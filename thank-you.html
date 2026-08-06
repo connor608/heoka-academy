@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex">
 <title>You're in. Here are your files | Heoka Academy</title>
 <meta name="description" content="Your Heoka Academy download page. Grab your files and run your first job.">
+<meta name="theme-color" content="#07100B">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316291E'/%3E%3Cpath d='M16 18h8v11h16V18h8v28h-8V35H24v11h-8z' fill='%23FFF8EC'/%3E%3Cpath d='M47 13l-8 38' stroke='%23C2570F' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 <!--
   ============================================================
@@ -158,6 +159,13 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.2vw,38px);lin
 /* footer */
 footer{border-top:1px solid var(--line);padding:40px 0 56px;font-family:var(--mono);font-size:13px;color:var(--ink-soft)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:inherit}
+footer a:hover{color:var(--copper)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 
 @media(max-width:780px){
   .confirm{padding:56px 0 48px}
@@ -275,7 +283,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <footer>
   <div class="wrap">
     <span>HEOKA / ACADEMY &middot; built in the UK</span>
-    <span>one payment &middot; no subscription</span>
+    <span>one payment &middot; no subscription &middot; <a href="privacy.html">privacy</a> &middot; <a href="terms.html">the small print</a></span>
   </div>
 </footer>
 
