@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Only the landing page is listed on purpose: thank-you.html is noindex (it is the paid
+     delivery page), 404.html is noindex, and privacy/terms don't need crawl priority. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://connor608.github.io/heoka-academy/</loc>
+  </url>
+</urlset>

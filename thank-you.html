@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex">
 <title>You're in. Here are your files | Heoka Academy</title>
 <meta name="description" content="Your Heoka Academy download page. Grab your files and run your first job.">
+<meta name="theme-color" content="#07100B">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316291E'/%3E%3Cpath d='M16 18h8v11h16V18h8v28h-8V35H24v11h-8z' fill='%23FFF8EC'/%3E%3Cpath d='M47 13l-8 38' stroke='%23C2570F' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 <!--
   ============================================================
@@ -13,11 +14,16 @@
   (search the file for the exact string in the left column)
 
   1. https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/AI_Company_Brain_Starter_Kit_v2.zip      - AI Company Brain Starter Kit, the vault folder as a zip
-                              appears at: line 199 (download button href)
+                              (download button href, done and live)
   2. https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/AI_Company_Brain_Starter_Kit_v2.pdf      - AI Company Brain Starter Kit, the guide as a PDF
-                              appears at: line 208 (download button href)
-  3. https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/SME_AI_Playbook_v1.pdf - The SME AI Playbook, PDF
-                              appears at: line 217 (download button href)
+                              (download button href, done and live)
+  3. SME_AI_Playbook_v1.pdf - The SME AI Playbook, PDF. NOT UPLOADED YET: the file
+                              is missing from d/efd8ce239771a8e2/, so its download
+                              button pointed at a 404. The button is swapped for a
+                              "reply to your receipt" note until the PDF exists.
+                              To go live: upload SME_AI_Playbook_v1.pdf into
+                              d/efd8ce239771a8e2/, then restore the button (the
+                              original markup is kept in a comment at the note).
 
   This page is the redirect target for all three Stripe Payment Links on index.html
   (#STRIPE_LINK_KIT, #STRIPE_LINK_PLAYBOOK, #STRIPE_LINK_BUNDLE). It shows every
@@ -153,6 +159,13 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.2vw,38px);lin
 /* footer */
 footer{border-top:1px solid var(--line);padding:40px 0 56px;font-family:var(--mono);font-size:13px;color:var(--ink-soft)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:inherit}
+footer a:hover{color:var(--copper)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
 
 @media(max-width:780px){
   .confirm{padding:56px 0 48px}
@@ -213,8 +226,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
           <strong>The SME AI Playbook</strong>
           <span>A PDF. Where your hours go, what to hand over first, and how to keep client information safe.</span>
         </div>
-        <!-- PLACEHOLDER: https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/SME_AI_Playbook_v1.pdf -->
+        <!-- MISSING FILE: SME_AI_Playbook_v1.pdf is not in d/efd8ce239771a8e2/ yet, so the
+             original button below linked to a 404. Upload the PDF to that folder, then delete
+             the note and uncomment this button:
         <a class="btn btn-primary" href="https://connor608.github.io/heoka-academy/d/efd8ce239771a8e2/SME_AI_Playbook_v1.pdf">Download the playbook</a>
+        -->
+        <span class="mono" style="font-size:13px;color:var(--copper);max-width:28ch">Final touches going on now &mdash; reply to your receipt and I will send it straight over.</span>
       </div>
 
     </div>
@@ -266,7 +283,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <footer>
   <div class="wrap">
     <span>HEOKA / ACADEMY &middot; built in the UK</span>
-    <span>one payment &middot; no subscription</span>
+    <span>one payment &middot; no subscription &middot; <a href="privacy.html">privacy</a> &middot; <a href="terms.html">the small print</a></span>
   </div>
 </footer>
 
