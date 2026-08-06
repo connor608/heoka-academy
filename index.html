@@ -27,6 +27,12 @@
   - Set every Stripe link's success/redirect URL to thank-you.html on this site.
   - Name the Stripe products exactly as they appear on this page so the receipt matches.
   - Formspree: formspree.io -> new form -> paste the ID over REPLACE_FORM_ID.
+
+  Until the placeholders are filled, the page guards itself (script at the bottom):
+  - Pricing buttons show a "checkout opens very soon" note and point people at the
+    free section instead of silently doing nothing.
+  - The free-page form skips the (dead) Formspree call and serves the PDF directly.
+  Both guards turn off on their own the moment the real links/ID are pasted in.
   ============================================================
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -705,28 +711,64 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 </main>
 
 <script>
-// Inline submit for the lead-magnet form: keeps people on the page, shows a thank-you.
+// Two jobs in here, and both guards switch themselves off once the real IDs/links are pasted in:
+// 1. Lead-magnet form: posts to Formspree inline, keeps people on the page, shows a thank-you.
+//    While the action still contains REPLACE_FORM_ID the network call would always fail, so it
+//    skips Formspree and serves the free PDF directly instead. Once a real form ID is in, the
+//    normal email flow runs (and the thank-you still offers the direct download).
+// 2. Pricing buttons: while they still point at #STRIPE_LINK placeholders, a click would
+//    silently do nothing. Until real Stripe links are pasted in, clicking shows a short
+//    "checkout opens soon" note and scrolls to the free section instead.
 (function(){
+  var FREE_PDF = 'd/efd8ce239771a8e2/The_Business_File.pdf';
+
   var form = document.getElementById('capture');
   var note = document.getElementById('capture-note');
-  if(!form) return;
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var btn = form.querySelector('button');
-    btn.textContent = 'Sending...';
-    fetch(form.action, {
-      method:'POST',
-      body:new FormData(form),
-      headers:{'Accept':'application/json'}
-    }).then(function(r){
-      if(r.ok){
-        form.innerHTML = '<p style="font-family:var(--mono);font-size:15px;color:var(--copper)">Done. Check your inbox for The Business File.</p>';
-        if(note) note.textContent = 'If it is not there in a minute, check spam and add us to your contacts.';
-      } else {
-        btn.textContent = 'Try again';
+  if(form){
+    var live = form.action.indexOf('REPLACE_FORM_ID') === -1;
+    var doneMsg = '<p style="font-family:var(--mono);font-size:15px;color:var(--copper)">Done. ' +
+      '<a href="' + FREE_PDF + '" style="color:var(--copper)">Download The Business File</a>' +
+      (live ? ', and a copy is on its way to your inbox.' : '.') + '</p>';
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!live){
+        form.innerHTML = doneMsg;
+        if(note) note.textContent = 'Fill it in once, paste it at the top of any chat.';
+        return;
       }
-    }).catch(function(){ btn.textContent = 'Try again'; });
-  });
+      var btn = form.querySelector('button');
+      btn.textContent = 'Sending...';
+      fetch(form.action, {
+        method:'POST',
+        body:new FormData(form),
+        headers:{'Accept':'application/json'}
+      }).then(function(r){
+        if(r.ok){
+          form.innerHTML = doneMsg;
+          if(note) note.textContent = 'If it is not there in a minute, check spam and add us to your contacts.';
+        } else {
+          btn.textContent = 'Try again';
+        }
+      }).catch(function(){ btn.textContent = 'Try again'; });
+    });
+  }
+
+  var pending = document.querySelectorAll('a[href^="#STRIPE_LINK"]');
+  for(var i = 0; i < pending.length; i++){
+    pending[i].addEventListener('click', function(e){
+      e.preventDefault();
+      var tier = this.closest('.tier');
+      if(tier && !tier.querySelector('.checkout-note')){
+        var p = document.createElement('p');
+        p.className = 'checkout-note';
+        p.style.cssText = 'font-family:var(--mono);font-size:13px;color:var(--copper);margin-top:12px';
+        p.textContent = 'Checkout opens very soon. Grab the free page below and you will be first to hear.';
+        this.insertAdjacentElement('afterend', p);
+      }
+      var free = document.getElementById('free');
+      if(free) free.scrollIntoView({behavior:'smooth'});
+    });
+  }
 })();
 </script>
 
